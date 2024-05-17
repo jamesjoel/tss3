@@ -1,0 +1,54 @@
+body{
+    background-color: red;
+    margin: 0;
+    padding: 0;
+}
+.header{
+    height: 350px;
+    width: 100%;
+    background-color: #0C0D0E;
+}
+.populer-item{
+    background-color: #F0E8D1;
+    height: 550px;
+    width: 100%;
+}
+.intro{
+    height: 200px;
+    width: 100%;
+    background-color: #fff;
+}
+.intro2{
+    height: 100px;
+    width: 100%;
+    background-color: #0C0D0E;
+}
+.content{
+    height: 200px;
+    width: 100%;
+    background-color: #FFF;
+}
+.team{
+    height: 250px;
+    width: 100%;
+    background-color: #F0E8D1;
+}
+.footer{
+    height: 250px;
+    width: 100%;
+    background-color: #0C0D0E;
+    border-top: 10px solid #FFA800;
+}
+.navbar{
+    height: 80px;
+    width: 960px;
+    background-color: red;
+    margin: 0px auto;
+    
+}
+.slider{
+    height: 200px;
+    width: 960px;
+    background-color: blue;
+    margin: 0 auto;
+}

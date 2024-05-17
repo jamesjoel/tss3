@@ -1,0 +1,82 @@
+body{
+    
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.header{
+    height: 50px;
+    width: 100%;
+    background-color: #1EAAF1;
+}
+.navbar{
+    height: 100px;
+    width: 100%;
+    
+}
+.slider{
+    height: 400px;
+    width: 100%;
+    background-color: #968748;
+}
+.teachers{
+    min-height: 600px;
+    width: 100%;
+    
+}
+.courses{
+    min-height: 600px;
+    width: 100%;
+    background-color: gray;
+}
+.pricing{
+    min-height: 600px;
+    width: 100%;
+    
+}
+.footer{
+    background-color: #232323;
+    height: 500px;
+    width: 100%;
+}
+.viewport{
+    width: 1110px;
+    margin: 0 auto;
+}
+.left-header{
+    width: 500px;
+    height: 50px;
+    float: left;
+    /* background-color: red; */
+}
+.left-header p{
+    color : #fff;
+    padding: 15px 0;
+    
+    margin: 0;
+}
+.middle-header{
+    width: 200px;
+    height: 50px;
+    /* background-color: red; */
+    float: left;
+}
+.middle-header p{
+    color : #fff;
+    padding: 15px 0;
+    
+    margin: 0;
+    
+}
+.right-header{
+    width: 200px;
+    height: 50px;
+    float: left;
+    
+}
+.right-header p{
+    margin: 0;
+    color : #fff;
+    padding: 15px 0;
+    
+}
