@@ -17,6 +17,9 @@ do{
             8. operators
             9. condition state (if, if...else, if...else if ..., switch case)
             10. loop (for, while, do..while)
+            11. function
+            12. arrow fun
+            13. rest paramerter
 
 
     */
