@@ -62,6 +62,7 @@ body{
     padding: 0;
     font-size: 13px;
     text-shadow: 2px 2px 5px #9E1FCA;
+    /* front,left,dark if we give minus values than output would be back right  or light*/
 }
 .left-content{
     width: 250px;
@@ -83,7 +84,7 @@ body{
     box-shadow: 2px 2px 5px #fff;
     border-radius: 0px 5px 3px 0px;
     transition: .5s;
-    /*              t   r  b   l*/
+    /*              top   right  blur   l*/
 }
 .left-content ul li:hover{
     box-shadow: 2px 2px 12px #fff;
