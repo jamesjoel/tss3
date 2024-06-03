@@ -1,0 +1,19 @@
+{
+  "name": "reverse-the-string",
+  "version": "1.0.1",
+  "description": "This package helps in reversing the string",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "keywords": [
+    "reverse",
+    "string"
+  ],
+  "repository": "https://github.com/chsaiesh/reverse-the-string-package.git",
+  "author": "Saiesh <chsaiesh@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
