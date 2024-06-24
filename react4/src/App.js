@@ -9,6 +9,8 @@ import Contact from './components/feature/Contact'
 import Test1 from './components/feature/Test1'
 import Test2 from './components/feature/Test2'
 import Test3 from './components/feature/Test3'
+import Test4 from './components/feature/Test4'
+import Test5 from './components/feature/Test5'
 
 const App = () => {
 
@@ -25,6 +27,8 @@ const App = () => {
         <Route path='test1' element={ <Test1/> } />
         <Route path='test2' element={ <Test2/> } />
         <Route path='test3' element={ <Test3/> } />
+        <Route path='test4' element={ <Test4/> } />
+        <Route path='test5' element={ <Test5/> } />
       </Routes>
       
     </div>
