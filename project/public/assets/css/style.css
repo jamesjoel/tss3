@@ -1,0 +1,13 @@
+.border-orange{
+    border : 1px solid #F28123;
+}
+.bg-orange{
+    background-color: #F28123 !important;
+}
+.btn-orange{
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background-color: #F28123;
+    color: #fff;
+    padding: 10px 20px;
+}
