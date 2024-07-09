@@ -1,7 +1,20 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {NavLink} from 'react-router-dom'
+import axios from 'axios'
 
 const Signup = () => {
+
+    let [cityArr, setCityArr] = useState([]);
+
+    useEffect(()=>{
+
+        axios.get("http://localhost:3000/api/city").then(response=>{
+            setCityArr(response.data);
+        })
+
+    },[])
+
+
   return (
     <div className="container" style={{minHeight : "600px"}}>
         <div className="row">
@@ -36,8 +49,9 @@ const Signup = () => {
                             <label>City</label>
                             <select className='form-control' >
                                 <option>Select</option>
-                                <option>Indore</option>
-                                <option>Mumbai</option>
+                                {
+                                    cityArr.map(item=><option>{item.city}</option>)
+                                }
                             </select>
                         </div>
                         <div className='my-2'>

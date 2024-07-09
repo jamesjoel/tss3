@@ -1,7 +1,18 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
+import axios from 'axios'
+
 
 const Header = () => {
+
+  let [cateArr, setCateArr] = useState([]);
+
+  useEffect(()=>{
+    axios.get("http://localhost:3000/api/category").then(response=>{
+      setCateArr(response.data);
+    })
+  },[])
+
   return (
     <>
     <div className="top-header-area" id="sticker">
@@ -37,6 +48,15 @@ const Header = () => {
                   </li>
                   <li className="">
                     <NavLink to="/about">About</NavLink>
+                  </li>
+                  <li><a href="#">Category</a>
+                    <ul className="sub-menu">
+                      {
+                        cateArr.map(item=><li><a href="404.html">{item.name}</a></li>)
+                      }
+                      
+                      
+                    </ul>
                   </li>
 
 
