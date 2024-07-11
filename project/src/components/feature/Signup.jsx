@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import { useFormik } from 'formik'
 
 const Signup = () => {
-
+    let navigate = useNavigate();
     let signupFrm = useFormik({
         initialValues : {
             name : "",
@@ -17,7 +17,7 @@ const Signup = () => {
         },
         onSubmit : (data)=>{
            axios.post("http://localhost:3000/api/signup", data).then(response=>{
-            console.log(response.data);
+            navigate("/login");
            })
         }
     });

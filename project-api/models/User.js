@@ -1,10 +1,13 @@
 require("../config/db");
 
 let mongoose = require("mongoose")
+
+// encrypt-decrypt
+
 let UserSchema = mongoose.Schema({
     name : String,
     password : String,
-    repass : String,
+    
     email : String,
     gender : String,
     city : String,
@@ -13,3 +16,11 @@ let UserSchema = mongoose.Schema({
 
 let User = mongoose.model("user", UserSchema);
 module.exports = User;
+
+/*
+express
+mongoose
+cors
+
+
+*/
