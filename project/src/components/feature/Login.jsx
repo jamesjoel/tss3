@@ -1,9 +1,30 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useFormik } from 'formik'
+import * as YUP from 'yup'
+
+let LoginSchema = YUP.object({
+    email : YUP.string().required("Insert Your Email-Id/Username"),
+    password : YUP.string().required("Insert Your Password")
+})
 
 const Login = () => {
+
+    let LoginFrm = useFormik({
+        validationSchema : LoginSchema,
+        initialValues : {
+            email : "",
+            password : ""
+        },
+        onSubmit : (data)=>{
+
+        }
+    })
+
+
   return (
     <div className="container" style={{minHeight : "600px"}}>
+            <form onSubmit={LoginFrm.handleSubmit}>
         <div className="row">
             <div className="col-md-6 offset-md-3">
                 <div className="card my-5 border-orange">
@@ -14,11 +35,25 @@ const Login = () => {
                     <div className="card-body">
                         <div className='my-2'>
                             <label>Email</label>
-                            <input type='text' className='form-control' />
+                            <input type='text' name="email" onChange={LoginFrm.handleChange} className={'form-control '+(LoginFrm.errors.email && LoginFrm.touched.email ? 'is-invalid' : '')} />
+                            {
+                                LoginFrm.errors.email && LoginFrm.touched.email
+                                ?
+                                <small className='text-danger'>{LoginFrm.errors.email}</small>
+                                :
+                                ''
+                            }
                         </div>
                         <div className='my-2'>
                             <label>Password</label>
-                            <input type='password' className='form-control' />
+                            <input type='password' name="password" onChange={LoginFrm.handleChange} className={'form-control '+(LoginFrm.errors.password && LoginFrm.touched.password ? 'is-invalid' : '')} />
+                            {
+                                LoginFrm.errors.password && LoginFrm.touched.password
+                                ?
+                                <small className='text-danger'>{LoginFrm.errors.password}</small>
+                                :
+                                ''
+                            }
                         </div>
                     </div>
                     <div className="card-footer">
@@ -27,6 +62,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
+            </form>
     </div>
   )
 }

@@ -1,99 +1,66 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import { useFormik } from 'formik'
+
 const About = () => {
     
-    // let [arr, setArr] = useState([]);
-    // let [loader, setLoader] = useState(false)
+    let [pro, setPro] = useState([]);
+    let [showSpinner, setShowSpinner] = useState(false)
 
-    // let handleClick = ()=>{
-    //     setLoader(true);
-    //     axios.get("http://localhost:3000/api/product").then((response)=>{
-    //         console.log(response.data)
-    //         setArr(response.data);
-    //         setLoader(false)
-    //     })
-    // }
-
-
-    let myForm = useFormik({
-        initialValues : {
-            name : "",
-            address : "" 
-        },
-        onSubmit : (data)=>{
-            console.log(data);
-        }
-    });
+    let getdata = ()=>{
+        setShowSpinner(true)
+        axios.get("https://fakestoreapi.com/products").then(response=>{
+            setPro(response.data);
+            setShowSpinner(false)
+        })
+    }
+    
 
   return (
     <div className="container my-4" style={{minHeight : "600px"}}>
         <div className="row">
-            <div className="col-md-6 offset-md-3">
-            <form onSubmit={myForm.handleSubmit}>
-
-                <div className='my-3'>
-                    <label>Full Name</label>
-                    <input onChange={myForm.handleChange} name="name" type='text' className='form-control' />
-                </div>
-                <div className='my-3'>
-                    <label>Address</label>
-                    <textarea onChange={myForm.handleChange} name="address" className='form-control' ></textarea>
-                </div>
-                <button type='submit' className='btn btn-info'>Submit</button>
-            </form>
-            {/* {
-                loader==true
-                ?
-                <div class="loader">
-                <div class="loader-inner">
-                    <div class="circle"></div>
-                </div>
-                </div>
-                :
-                ''
-
-            }
-
-
-                <button onClick={handleClick} className='btn btn-info'>OK 
+            <div className="col-md-12">
+                <button onClick={getdata} className='btn btn-info'>
+                    Get Data 
                     {
-                        loader==true 
-                        ?  
-                        <span className='spinner-border spinner-border-sm'></span> 
+                        showSpinner==true
+                        ?
+                        <span className='spinner-border spinner-border-sm'></span>
                         :
                         ''
                     }
-                    
                 </button>
-                <table className='table table-dark'>
+                {
+                    pro.length == 0
+                    ?
+                    <div className='alert alert-info my-3'>No Data Found !</div>
+                    :
+                    <table className="table table-dark my-4">
                     <thead>
                         <tr>
                             <th>S.No.</th>
                             <th>Title</th>
                             <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Category</th>
+                            <th>Image</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            arr.map((item, index)=>{
+                            pro.map((item, index)=>{
                                 return(
                                     <tr>
-                                        <td>{index+1}</td>
-                                        <td>{item.title}</td>
-                                        <td>{item.price}</td>
-                                        <td>{item.quantity}</td>
-                                        
+                                        <td>{ index+1 }</td>
+                                        <td>{ item.title }</td>
+                                        <td>{ item.price }</td>
+                                        <td>{ item.category }</td>
+                                        <td><img src={ item.image } style={{height : "100px", width : "100px"}}/></td>
                                     </tr>
                                 )
                             })
                         }
                     </tbody>
-                </table> */}
-
-
-
+                </table>
+                }
             </div>
         </div>
     </div>
