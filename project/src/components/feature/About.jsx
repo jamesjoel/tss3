@@ -6,6 +6,8 @@ const About = () => {
     let [pro, setPro] = useState([]);
     let [showSpinner, setShowSpinner] = useState(false)
 
+    let [x, setX] = useState("");
+
     let getdata = ()=>{
         setShowSpinner(true)
         axios.get("https://fakestoreapi.com/products").then(response=>{
@@ -14,11 +16,22 @@ const About = () => {
         })
     }
     
+    let demo = (event)=>{
+        if(event.length == 1)
+        {
+            setX("+91 "+event);
+        }
+        else{
+            setX(event)
+        }
+    }
 
   return (
     <div className="container my-4" style={{minHeight : "600px"}}>
         <div className="row">
             <div className="col-md-12">
+                +91<input type='text' value={x} onChange={(e)=>demo(e.target.value)} className='form-control' />
+                <br />
                 <button onClick={getdata} className='btn btn-info'>
                     Get Data 
                     {

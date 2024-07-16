@@ -2,20 +2,10 @@ import React, {useEffect, useState} from 'react'
 import {NavLink, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import { useFormik } from 'formik'
-import * as YUP from 'yup'
-// * meaining all import
-let SingupSchema = YUP.object({
-    name : YUP.string().required("Insert Your Full Name"),
-    email : YUP.string().email("Invalid Email Id").required("Insert Email Id"),
-    password : YUP.string().required("Insert Password"),
-    repass : YUP.string().oneOf([YUP.ref('password')], "Password and Re-Password not matched").required("Insert Re-Password"),
-    address : YUP.string().required("Insert Address"),
-    city : YUP.string().required("Select Your City"),
-    gender : YUP.string().required("Select Your Gender")
-});
-
+import SingupSchema from '../../schema/SignupSchema'
 
 const Signup = () => {
+    let [country, setCountry] = useState([]);
     let navigate = useNavigate();
     let signupFrm = useFormik({
         validationSchema : SingupSchema,
@@ -26,7 +16,8 @@ const Signup = () => {
             repass : "",
             address : "",
             city : "",
-            gender : ""
+            gender : "",
+            contact : ""
         },
         onSubmit : (data)=>{
             console.log("*****");
@@ -43,6 +34,12 @@ const Signup = () => {
             setCityArr(response.data);
         })
 
+    },[])
+
+    useEffect(()=>{
+        axios.get("http://localhost:3000/api/country").then(response=>{
+            setCountry(response.data);
+        })
     },[])
 
 
@@ -143,6 +140,27 @@ const Signup = () => {
                                 signupFrm.errors.gender && signupFrm.touched.gender
                                 ?
                                 <small className='text-danger'>{ signupFrm.errors.gender }</small>
+                                :
+                                ''
+
+                            }
+                        </div>
+                        <div className='my-2'>
+                            <label>Contact</label>
+                            <div className='input-group'>
+
+                            <select className='input-group-prepand'>
+                                <option>Code</option>
+                                {
+                                    country.map(item=><option>{item.code} {item.dial_code}</option>)
+                                }
+                            </select>
+                            <input name="contact" onChange={signupFrm.handleChange} type='text' className={'form-control '+(signupFrm.errors.contact && signupFrm.touched.contact ? 'is-invalid' : '')} />
+                            </div>
+                            {
+                                signupFrm.errors.contact && signupFrm.touched.contact
+                                ?
+                                <small className='text-danger'>{ signupFrm.errors.contact }</small>
                                 :
                                 ''
 

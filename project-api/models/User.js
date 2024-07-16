@@ -11,7 +11,8 @@ let UserSchema = mongoose.Schema({
     email : String,
     gender : String,
     city : String,
-    address : String
+    address : String,
+    contact : Number
 })
 
 let User = mongoose.model("user", UserSchema);

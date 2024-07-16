@@ -1,12 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useFormik } from 'formik'
-import * as YUP from 'yup'
-
-let LoginSchema = YUP.object({
-    email : YUP.string().required("Insert Your Email-Id/Username"),
-    password : YUP.string().required("Insert Your Password")
-})
+import LoginSchema from '../../schema/LoginSchema'
+import axios from 'axios'
 
 const Login = () => {
 
@@ -17,7 +13,9 @@ const Login = () => {
             password : ""
         },
         onSubmit : (data)=>{
-
+            axios.post("http://localhost:3000/api/user/auth", data).then(response=>{
+                console.log(response)
+            })
         }
     })
 
