@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {NavLink, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import { useFormik } from 'formik'
-import SingupSchema from '../../schema/SignupSchema'
+import SingupSchema from '../../../schema/SignupSchema'
 
 const Signup = () => {
     let [country, setCountry] = useState([]);

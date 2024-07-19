@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useFormik } from 'formik'
-import LoginSchema from '../../schema/LoginSchema'
+import LoginSchema from '../../../schema/LoginSchema'
 import axios from 'axios'
 
 const Login = () => {
