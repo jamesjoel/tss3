@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
 import axios from 'axios'
+import { API_URL } from '../../../util/API_URL';
 
 
 const Header = () => {
@@ -8,7 +9,7 @@ const Header = () => {
   let [cateArr, setCateArr] = useState([]);
 
   useEffect(()=>{
-    axios.get("http://localhost:3000/api/category").then(response=>{
+    axios.get(API_URL+"/category").then(response=>{
       setCateArr(response.data);
     })
   },[])
@@ -52,7 +53,7 @@ const Header = () => {
                   <li><a href="#">Category</a>
                     <ul className="sub-menu">
                       {
-                        cateArr.map(item=><li><a href="404.html">{item.name}</a></li>)
+                        cateArr.map(item=><li key={item._id}><a href="404.html">{item.name}</a></li>)
                       }
                       
                       

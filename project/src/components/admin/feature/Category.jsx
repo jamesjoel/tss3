@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import {NavLink} from 'react-router-dom'
 import axios from 'axios'
+import { API_URL } from '../../../util/API_URL';
 
 const Category = () => {
 
     let [allCate, setAllCate] = useState([]);
     useEffect(()=>{
-        axios.get("http://localhost:3000/api/category").then(response=>{
+        axios.get(API_URL+"/category").then(response=>{
             setAllCate(response.data);
         })
     },[])
@@ -28,7 +29,7 @@ const Category = () => {
                         {
                             allCate.map((item, index)=>{
                                 return(
-                                    <tr>
+                                    <tr key={item._id}>
                                         <td>{index+1}</td>
                                         <td>{item.name}</td>
                                     </tr>

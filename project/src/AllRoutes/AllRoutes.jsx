@@ -17,6 +17,8 @@ import Category from '../components/admin/feature/Category'
 import Orders from '../components/admin/feature/Orders'
 import AddCategory from '../components/admin/feature/AddCategory'
 import AddProduct from '../components/admin/feature/AddProduct'
+import SubCategory from '../components/admin/feature/SubCategory'
+import AddSubCategory from '../components/admin/feature/AddSubCategory'
 
 
 const AllRoutes = () => {
@@ -39,6 +41,8 @@ const AllRoutes = () => {
               <Route path='product/add' element={<AddProduct />} />
               <Route path='category' element={<Category />} />
               <Route path='category/add' element={<AddCategory />} />
+              <Route path='sub-category' element={<SubCategory />} />
+              <Route path='sub-category/add' element={<AddSubCategory />} />
               <Route path='orders' element={<Orders />} />
               <Route path='setting' element={<Setting />} />
            </Route>

@@ -3,6 +3,7 @@ import {NavLink, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import { useFormik } from 'formik'
 import SingupSchema from '../../../schema/SignupSchema'
+import { API_URL } from '../../../util/API_URL'
 
 const Signup = () => {
     let [country, setCountry] = useState([]);
@@ -21,7 +22,7 @@ const Signup = () => {
         },
         onSubmit : (data)=>{
             console.log("*****");
-           axios.post("http://localhost:3000/api/signup", data).then(response=>{
+           axios.post(API_URL+"/signup", data).then(response=>{
             navigate("/login");
            })
         }

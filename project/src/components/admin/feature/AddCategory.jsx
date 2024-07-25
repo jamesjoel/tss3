@@ -2,6 +2,7 @@ import React from 'react'
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { API_URL } from '../../../util/API_URL'
 
 const AddCategory = () => {
     let navi = useNavigate();
@@ -10,7 +11,7 @@ const AddCategory = () => {
             name : ""
         },
         onSubmit : (data)=>{
-            axios.post("http://localhost:3000/api/category", data).then(response=>{
+            axios.post(API_URL+"/category", data).then(response=>{
                     navi("/admin/category");
             })
         }

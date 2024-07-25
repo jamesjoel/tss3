@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useFormik } from 'formik'
 import LoginSchema from '../../../schema/LoginSchema'
 import axios from 'axios'
+import {API_URL} from '../../../util/API_URL'
 
 const Login = () => {
 
@@ -13,7 +14,7 @@ const Login = () => {
             password : ""
         },
         onSubmit : (data)=>{
-            axios.post("http://localhost:3000/api/user/auth", data).then(response=>{
+            axios.post(API_URL+"/user/auth", data).then(response=>{
                 console.log(response)
             })
         }
