@@ -19,6 +19,10 @@ import AddCategory from '../components/admin/feature/AddCategory'
 import AddProduct from '../components/admin/feature/AddProduct'
 import SubCategory from '../components/admin/feature/SubCategory'
 import AddSubCategory from '../components/admin/feature/AddSubCategory'
+import Logout from '../components/user/feature/Logout'
+import AdminLogout from '../components/admin/feature/Logout'
+import MyAccount from '../components/user/feature/MyAccount'
+import Users from '../components/admin/feature/Users'
 
 
 const AllRoutes = () => {
@@ -31,12 +35,16 @@ const AllRoutes = () => {
               <Route path='signup' element={<Signup />} />
               <Route path='cart' element={<Cart />} />
               <Route path='shop' element={<Shop />} />
+              <Route path='my-account' element={<MyAccount />} />
+              <Route path='logout' element={<Logout />} />
               <Route path='about' element={<About />} />
            </Route>
 
            <Route path='admin' element={<AdminModule />}>
               <Route path='' element={<AdminLogin />} />
               <Route path='dashboard' element={<Dashboard />} />
+              <Route path='users' element={<Users />} />
+              <Route path='logout' element={<AdminLogout />} />
               <Route path='product' element={<Product />} />
               <Route path='product/add' element={<AddProduct />} />
               <Route path='category' element={<Category />} />

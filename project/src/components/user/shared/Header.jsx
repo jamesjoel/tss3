@@ -41,12 +41,7 @@ const Header = () => {
                   <li className="">
                     <NavLink to="/cart">My Cart</NavLink>
                   </li>
-                  <li className="">
-                    <NavLink to="/login">Login</NavLink>
-                  </li>
-                  <li className="">
-                    <NavLink to="/signup">Signup</NavLink>
-                  </li>
+                  
                   <li className="">
                     <NavLink to="/about">About</NavLink>
                   </li>
@@ -59,6 +54,32 @@ const Header = () => {
                       
                     </ul>
                   </li>
+                  {
+                    localStorage.getItem("access-token") 
+                    ?
+                    <>
+                      <li className="">
+                       <NavLink style={{backgroundColor : "#000"}} to="/my-account">{localStorage.getItem("name")}</NavLink>
+                       <ul className="sub-menu">
+                          <li><NavLink to="/my-account">My Account</NavLink></li>
+                          <li><NavLink to="/logout">Logout</NavLink></li>
+                      
+                      </ul>
+                  </li>
+                  
+                    </>
+                    :
+                    <>
+                    <li className="">
+                    <NavLink to="/login">Login</NavLink>
+                  </li>
+                  <li className="">
+                    <NavLink to="/signup">Signup</NavLink>
+                  </li>
+                    </>
+
+                  }
+                  
 
 
                   

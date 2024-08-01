@@ -1,12 +1,13 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import LoginSchema from '../../../schema/LoginSchema'
 import axios from 'axios'
 import {API_URL} from '../../../util/API_URL'
 
 const Login = () => {
-
+    let navigate = useNavigate();
+    let [errMsg, setErrMsg] = useState("");
     let LoginFrm = useFormik({
         validationSchema : LoginSchema,
         initialValues : {
@@ -15,7 +16,17 @@ const Login = () => {
         },
         onSubmit : (data)=>{
             axios.post(API_URL+"/user/auth", data).then(response=>{
-                console.log(response)
+                console.log(response.data)
+                if(response.data.success==true)
+                {
+                    let token = response.data.token;
+                    localStorage.setItem("access-token", token);
+                    localStorage.setItem("name", response.data.name)
+                    navigate("/");
+                }
+                else{
+                    setErrMsg("This Email and Password is Invalid !");
+                }
             })
         }
     })
@@ -57,6 +68,11 @@ const Login = () => {
                     </div>
                     <div className="card-footer">
                         <button type='submit' className='btn btn-orange'>Login</button>
+                        <p className='text-danger text-center'>
+                            {
+                                errMsg
+                            }
+                        </p>
                     </div>
                 </div>
             </div>

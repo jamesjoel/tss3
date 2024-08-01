@@ -6,4 +6,9 @@ routes.get("/", async(req, res)=>{
     res.send(result);
 })
 
+routes.post("/", async(req, res)=>{
+    await Product.create(req.body);
+    res.send({ success : true });
+})
+
 module.exports = routes;

@@ -14,7 +14,10 @@ const Header = () => {
 
             
             <div className="collapse navbar-collapse justify-content-start" id="collapsibleNavbar">
-                <ul className="navbar-nav" style={{ margin : "0px 30px 0px 30px"}}>
+                {
+                    localStorage.getItem("admin-access-token")
+                    ?
+                    <ul className="navbar-nav" style={{ margin : "0px 30px 0px 30px"}}>
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/admin/dashboard">Dashboard</NavLink>
                     </li>
@@ -31,10 +34,19 @@ const Header = () => {
                         <NavLink className="nav-link" to="/admin/orders">Orders</NavLink>
                     </li>
                     <li className="nav-item">
+                        <NavLink className="nav-link" to="/admin/users">Users</NavLink>
+                    </li>
+                    <li className="nav-item">
                         <NavLink className="nav-link" to="/admin/setting">Setting</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/admin/logout">Logout</NavLink>
                     </li>
                     
                 </ul>
+                :
+                ''
+                }
             </div>
         </nav>
     )
