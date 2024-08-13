@@ -1,0 +1,68 @@
+{
+  "Student": [
+    {
+      "Name": "Priya",
+      "Fees": 12000,
+      "City": "Katni",
+      "Address": "Jain Compound",
+      "class": "12th",
+      "id": "06e8"
+    },
+    {
+      "Name": "Payal",
+      "Fees": 25000,
+      "City": "ujjain",
+      "Address": "address",
+      "class": "10th",
+      "id": "9d62"
+    },
+    {
+      "id": "9818",
+      "Name": "Poorvi",
+      "Fees": "12000",
+      "Address": "geetabhavan",
+      "Class": "12",
+      "City": "Indore"
+    },
+    {
+      "id": "e9ff",
+      "Name": "Poorvi",
+      "Fees": "12000",
+      "Address": "geetabhavan",
+      "Class": "12",
+      "City": "Indore"
+    },
+    {
+      "id": "9257",
+      "Name": "poorvi",
+      "Fees": "20000",
+      "Address": "Geetabgavan",
+      "Class": "12",
+      "City": "Indore"
+    },
+    {
+      "id": "9ee8",
+      "Name": "poorvi",
+      "Fees": "20000",
+      "Address": "Geetabgavan",
+      "Class": "12",
+      "City": "Indore"
+    },
+    {
+      "id": "e6b9",
+      "Name": "poorvi",
+      "Fees": "20000",
+      "Address": "Geetabgavan",
+      "Class": "12",
+      "City": "Indore"
+    },
+    {
+      "id": "fd04",
+      "Name": "poorvi",
+      "Fees": "20000",
+      "Address": "Singhai Muhalla ,ward no-7",
+      "Class": "12th",
+      "City": "Ujjain"
+    }
+  ]
+}
