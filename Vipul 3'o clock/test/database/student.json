@@ -1,0 +1,33 @@
+{
+    "student": [
+        {
+            "name": "Vipul",
+            "fees": 5000,
+            "class":10,
+            "city":"Indore",
+            "address":"M.G.road "
+        },
+        {
+            "name": "Poorvi",
+            "fees": 4000,
+            "class":8,
+            "city":"Indore",
+            "address":"M.G.road "
+
+        },{
+            "name": "Sufiyan",
+            "fees": 8000,
+            "class":11,
+            "city":"Dewas",
+            "address":"M.G.road "
+
+        },{
+            "name": "Rohit",
+            "fees": 4000,
+            "class":7,
+            "city":"Indore",
+            "address":"M.G.road "
+
+        }
+    ]
+}
