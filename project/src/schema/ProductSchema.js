@@ -7,6 +7,7 @@ let ProductSchema = YUP.object({
       subcategory : YUP.string().required("Select Product Sub-Category"),
       detail : YUP.string().required("Insert Product Detail"),
       discount : YUP.string().required("Insert Discount"),
+      image : YUP.string().required("Insert Product Image"),
       quantity : YUP.string().required("Insert Product Quantity")
 })
 

@@ -9,7 +9,8 @@ const ProductSchema = mongoose.Schema({
     quantity : Number,
     category : String,
     subcategory : String,
-    discount : Number
+    discount : Number,
+    image : String
 })
 
 const Product = mongoose.model("product", ProductSchema);

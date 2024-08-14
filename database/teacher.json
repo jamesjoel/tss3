@@ -1,0 +1,11 @@
+{
+  "teacher": [
+    {
+      "id": "2",
+      "name": "Amar",
+      "salary": 8000,
+      "class": 12,
+      "city": "Mumbai"
+    }
+  ]
+}

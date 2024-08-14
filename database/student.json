@@ -1,0 +1,18 @@
+{
+    "student" : [
+        {
+            "id" : 1,
+            "name" : "rohit",
+            "age" : 25,
+            "city" : "indore",
+            "fee" : 5000
+        },
+        {
+            "id" : 2,
+            "name" : "amar",
+            "age" : 20,
+            "city" : "mumbai",
+            "fee" : 7000
+        }
+    ]
+}

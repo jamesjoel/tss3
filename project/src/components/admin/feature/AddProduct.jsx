@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import axios from 'axios'
 import {API_URL} from '../../../util/API_URL'
 import {useFormik} from 'formik'
@@ -6,6 +6,7 @@ import ProductSchema from '../../../schema/ProductSchema'
 import { useNavigate } from 'react-router-dom'
 
 const AddProduct = () => {
+  let photo = useRef();
   let navigate = useNavigate();
   let [allCate, setAllCate] = useState([]);
   let [allSubCate, setAllSubCate] = useState([]);
@@ -30,11 +31,25 @@ const AddProduct = () => {
       subcategory : "",
       detail : "",
       discount : "",
-      quantity : ""
+      quantity : "",
+      image : ""
 
     },
     onSubmit : (data)=>{
-      axios.post(API_URL+"/product", data).then(response=>{
+      // console.log(photo);
+      let myform = new FormData();
+      myform.append("image", photo.current.files[0]);
+      
+      myform.append("title", data.title);
+      myform.append("price", data.price);
+      myform.append("discount", data.discount);
+      myform.append("category", data.category);
+      myform.append("subcategory", data.subcategory);
+      myform.append("detail", data.detail);
+      myform.append("quantity", data.quantity);
+      
+      console.log(myform)
+      axios.post(API_URL+"/product", myform).then(response=>{
         navigate("/admin/product")
         // console.log(response.data)
 
@@ -63,10 +78,11 @@ const AddProduct = () => {
             <label>Product Price</label>
             <input name='price' onChange={ProFrm.handleChange} type='text' className={'form-control ' + (ProFrm.errors.price && ProFrm.touched.price ? 'is-invalid' : '')} />
           </div>
-          {/* <div className='my-2'>
+
+          <div className='my-2'>
             <label>Product Image</label>
-            <input type='text' className='form-control' />
-          </div> */}
+            <input ref={photo} name='image' type='file' onChange={ProFrm.handleChange} className={'form-control ' + (ProFrm.errors.image && ProFrm.touched.image ? 'is-invalid' : '')} />
+          </div>
           <div className='my-2'>
             <label>Product Category</label>
             <select name='category' onChange={(e)=>{getSubCate(e); ProFrm.handleChange(e)}} className={'form-control ' + (ProFrm.errors.category && ProFrm.touched.category ? 'is-invalid' : '')} >
