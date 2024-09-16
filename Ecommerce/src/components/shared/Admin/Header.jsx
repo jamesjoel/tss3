@@ -21,8 +21,17 @@ const Header = () => {
       <li className="nav-item ">
         <NavLink to="/Admin/Product">Product &nbsp;&nbsp;</NavLink>
       </li>
+      {/* <li className="nav-item ">
+        <NavLink to="/Admin/Product/Add">Product &nbsp;&nbsp;</NavLink>
+      </li> */}
       <li className="nav-item ">
-        <NavLink to="/Admin/Category">Category</NavLink>
+        <NavLink to="/Admin/Category">Category &nbsp;&nbsp;</NavLink>
+      </li>
+      <li className="nav-item ">
+        <NavLink to="/Admin/SubCategory">SubCategory &nbsp;&nbsp;</NavLink>
+      </li>
+      <li className="nav-item ">
+        <NavLink to="/Admin/User">User</NavLink>
       </li>
     </ul>
     <form className="form-inline my-2 my-lg-0">

@@ -1,15 +1,21 @@
 require("../config/db")
 const mongoose=require("mongoose");
 UserSchema=mongoose.Schema({
-    Username:String
-    ,User:String
+    username:String
+    ,email:String
     ,password:String
-    ,repass:String
     ,address:String
     ,pincode:Number
     ,contact :Number
-    ,city:String
-    ,Gender:String
+    // ,city:String
+    ,gender:String
+    ,createdAt:{
+        type :String
+        ,default:Date.now()
+    },
+    status:{type:Number,
+        default :1
+    }
 
 },{collection:"User"})
 let User=mongoose.model("User",UserSchema);

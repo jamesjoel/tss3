@@ -2,51 +2,61 @@ import React, { useEffect, useState } from 'react'
 import { NavLink ,useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import { useFormik } from 'formik'
-import * as YUP from  'yup'
 import Api_Url from '../../../constants/Api_Url'
 import SignUPSchema from '../../../Schema/UserSign'
-// FIRTLY CREATE A YUP OBJECT
+
 
 // here we are doing validation in yup with syntax put all fromik form tags input tag tag value=YUP.string().required()
 const SignUP = () => {
     let navigate =useNavigate();
+    let[showLoader ,setShowLoader]=useState(false);
+    let[Contact ,setContact]=useState([]);
+
+   let [cityarr,setCity]=useState([]);
+   useEffect(()=>{
+   axios.get(Api_Url+"City").then((response) =>{
+          setCity(response.data)
+          
+   }).catch((error)=>console.log(error));
+
+  //  axios.get(Api_Url+"contact").then((response)=>{
+    //  setContact(response.data);
+  //  }
+  //  )
+// here data is predefined mmethod
+},[])
+// HERE BLANK ARRAY IS MUSTS
+                 
     let SignUPForm= useFormik({
         validationSchema:SignUPSchema,
         initialValues:{
-            Username:""
-            ,User:""
+            username:""
+            ,email:""
             ,password:""
             ,repass:""
             ,address:""
             ,pincode:""
             ,contact :""
             ,city:""
-            ,Gender:""
+            ,gender:""
      }, onSubmit:(data)=>{
-      setShowLoader=true;
+      setShowLoader(true);
        axios
        .post(Api_Url+"User",data)
        .then((response)=>{
+      
         if(response.data.success=true)
           {
-           setShowLoader=false;
+           setShowLoader(false);
+           navigate("/Login");
         }
-        navigate("/Login");
+        console.log(response.data);
        })
       
      }
      })
-     let[showLoader ,setShowLoader]=useState(false);
 
-    let [cityarr,setCity]=useState([]);
-    useEffect(()=>{
-    axios.get(Api_Url+"city").then((response) =>{
-           setCity(response.data);
-    })
-// here data is predefined mmethod
-},[])
-// HERE BLANK ARRAY IS MUSTS
-                  
+   
   return (
     <>
   
@@ -62,9 +72,9 @@ const SignUP = () => {
                     </div>
                     {/* here this this constant coding for form submission */}
                     <div className='card-body'>
-                    <div className='my-2'>
+                    <div className='form-group my-2'>
                     <label>Name</label>
-                    <input onChange={SignUPForm.handleChange}  type='text' name='Username'  placeholder='Username'className={'form-control '+(SignUPForm.errors.Username&&SignUPForm.touched.Username 
+                    <input onChange={SignUPForm.handleChange}  type='text' name='username'  placeholder='Username'className={'form-control '+(SignUPForm.errors.Username&&SignUPForm.touched.Username 
                       ? 'is-invalid':'')}/>
                      {
                        SignUPForm.errors.Username && SignUPForm.touched.Username
@@ -77,9 +87,9 @@ const SignUP = () => {
                      </div>
                         <div className='my-2'>
                             <label>Email</label>
-                            <input onChange={SignUPForm.handleChange}  type='text' name='User'  placeholder='Email'className={'form-control '+(SignUPForm.errors.User&&SignUPForm.touched.User ?'is-invalid':'')}/>
+                            <input onChange={SignUPForm.handleChange}  type='text' name='email'  placeholder='Email'className={'form-control '+ (SignUPForm.errors.Email&&SignUPForm.touched.Email ?'is-invalid':'')}/>
                             {
-                             SignUPForm.errors.User && SignUPForm.touched.User
+                             SignUPForm.errors.Email && SignUPForm.touched.Email
                               ?
                              <small className='text-danger'>{SignUPForm.errors.User}</small>
                               :
@@ -130,7 +140,9 @@ const SignUP = () => {
                            </div>
                            <div className='my-2'>
                            <label>Contact</label>
-                           <input onChange={SignUPForm.handleChange} type="text" name='contact' placeholder='Enter phone number' className={'form-control '+(SignUPForm.errors.contact&&SignUPForm.touched.contact ?'is-invalid':'')}/>
+                           <div className='input-group'>
+                            <div className='input-group-text'>+91</div>
+                        <input onChange={SignUPForm.handleChange} type="text" name='contact' placeholder='Enter phone number' className={'form-control '+(SignUPForm.errors.contact&&SignUPForm.touched.contact ?'is-invalid':'')}/>
                            {
                             SignUPForm.errors.pincode && SignUPForm.touched.pincode
                             ?
@@ -138,6 +150,7 @@ const SignUP = () => {
                             :
                             ""
                             } 
+                            </div>
                            </div>
                            <div className='my-2'>
                             <label>City</label>
@@ -159,9 +172,9 @@ const SignUP = () => {
                         <label>Gender</label>
                         <br>
                         </br>
-                        Male &nbsp;&nbsp;<input type='radio' value="male"  onChange={SignUPForm.handleChange}  name='Gender'/>
+                        Male &nbsp;&nbsp;<input type='radio' value="male"  onChange={SignUPForm.handleChange}  name='gender'/>
                          
-                             &nbsp;&nbsp;&nbsp;&nbsp;Female&nbsp;&nbsp;<input type="radio" value="female" name='Gender'/>
+                             &nbsp;&nbsp;&nbsp;&nbsp;Female&nbsp;&nbsp;<input type="radio" value="female" name='ender'/>
                           { 
                             SignUPForm.errors.Gender && SignUPForm.touched.Gender
                           ?
@@ -178,7 +191,7 @@ const SignUP = () => {
                           {/* LOADER  */}
                           {
                             showLoader == true? 
-                          <span className='spinner-border spinner-border-sm'>
+                          <span className='spinner-border-dark spinner-border-sm'>
                           </span>
                           :
                           ""
