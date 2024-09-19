@@ -7,8 +7,9 @@ let ProductSchema=mongoose.Schema({
     subcategory: String,
     quantity:Number,
     discount:Number,
+    image:String,
     status:{type:Number,default:1},
     createAt :{type:Date , default: new Date()}
-},{collection:"product"})
-let Product=mongoose.model("product",ProductSchema);
+},{collection:"Product"})
+let Product=mongoose.model("Product",ProductSchema);
 module.exports =Product;

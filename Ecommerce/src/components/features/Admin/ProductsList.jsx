@@ -24,6 +24,9 @@ const ProductList = () => {
       <div className="row">
         <div className="col-md-12">
           <NavLink to="/Admin/Product/Add" className="btn btn-dark btn-sm">Add New Product</NavLink>
+         {
+          allPro.length>0
+          ?
           <table className="table table-dark table-bordered my-4">
                       <thead>
                         <tr>
@@ -45,12 +48,18 @@ const ProductList = () => {
                               <td>{item.price}</td>
                               <td>{item.category}</td>
                               <td>{item.subcategory}</td>
-                              <td><i class="fa-solid fa-pen-to-square text-warning"></i></td>
-                              <td><i class="fa-solid fa-trash text-danger"></i></td>
+                              <td><i className="fa-solid fa-pen-to-square text-warning"></i></td>
+                              <td><i className="fa-solid fa-trash text-danger"></i></td>
                           </tr>)
                         }
                       </tbody>
                     </table>
+                    :
+                    <div className='alert alert-danger'>
+                      No Product present
+                    </div>
+         }
+          
         </div>
       </div>
     </div>

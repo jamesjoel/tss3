@@ -1,7 +1,18 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useState,useEffect } from 'react'
+import axios from 'axios';
+import Api_Url from '../../../constants/Api_Url';
 
 const Categories = () => {
+    let[Category,SetCategory]=useState([]);
+  useEffect(()=>{
+            axios.get(Api_Url+"Category")
+            .then(response=>{
+                SetCategory(response.data);
+                console.log(response.data);
+            });
+  }, []);
   return (
 
     <div className="shop_sidebar_area mt-20px">
@@ -11,19 +22,18 @@ const Categories = () => {
     {/* <!-- Widget Title --> */}
     <h6 className="widget-title mb-30">Catagories</h6>
 
-    {/* <!--  Catagories  --> */}
-    <div className="catagories-menu">
-        <ul>
-            <li className="active"><a href="#">Chairs</a></li>
-            <li><NavLink to="#">Beds</NavLink></li>
-            <li><NavLink to="#">Accesories</NavLink></li>
-            <li><NavLink to="#">Furniture</NavLink></li>
-            <li><NavLink to="#">Home Deco</NavLink></li>
-            <li><NavLink to="#">Dressings</NavLink></li>
-            <li><NavLink to="#">Tables</NavLink></li>
-            <li><NavLink to='#'>{    }</NavLink></li>
-        </ul>
-    </div>
+    {/* <!--  Catagories menu --> */}
+     <div class="catagories-menu">
+                    <ul>
+                        {
+                            Category.map((item, index)=>{
+                                return(<li key={index}><a href="#">{item.category}</a></li>)
+
+                            })
+                        }
+                        
+                    </ul>
+                </div>
 </div>
 
 {/* <!-- ##### Single Widget ##### --> */}

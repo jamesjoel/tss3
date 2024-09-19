@@ -6,11 +6,17 @@ routes.post("/" ,(async(req,res)=>
     await SubCategory.create(req.body);
     res.send({success:true});
   }))
+ 
 routes.get("/",(async(req,res)=>{
         let result=await SubCategory.find();
         res.send(result);
         // res.send({success:true});
     }))
+    routes.get("/findbycategory/:a",async(req,res)=>{
+      let a=req.params.a;
+      let result= await SubCategory.find({category :a})
+      res.send(result);
+    });
 
     routes.get("/:id",(async(req,res)=>
     {

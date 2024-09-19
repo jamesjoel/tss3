@@ -19,6 +19,9 @@ const SubCategory = () => {
         <div className='col-md-8 offset-2 my-6'>
           <h4>SubCategories</h4>
          <NavLink to= "/Admin/SubCategory/Add" className='btn btn-primary'>Add Sub Category</NavLink>
+        {
+          SubCategory.length>0
+          ?
           <table className='table table-dark'>
             <thead>
               <tr>
@@ -44,6 +47,11 @@ const SubCategory = () => {
 
             </tbody>
           </table>
+          :
+          <div className='alert alert-danger'>
+            No SubCategory is Present
+          </div>
+        }
         </div>
       </div>
     </div>

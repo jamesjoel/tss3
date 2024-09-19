@@ -8,6 +8,7 @@ let ProductSchema = YUP.object({
       detail : YUP.string().required("Insert Product Detail"),
       discount : YUP.string().required("Insert Product Discount"),
       quantity : YUP.string().required("Insert Product Quantity"),
+      image:YUP.string().required("Select an image of Product")
 })
 
 export default ProductSchema;

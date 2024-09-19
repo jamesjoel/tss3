@@ -22,7 +22,10 @@ const UserList = () => {
     <h4 className='text-center'>
       List of all Users
     </h4>
-    <table className='table table-dark table-hover table-striped'>
+{
+  allUser.length>0
+  ?
+  <table className='table table-dark table-hover table-striped'>
       <thead>
         <tr>
           <th>S.no.</th>
@@ -47,6 +50,12 @@ const UserList = () => {
 }
       </tbody>
     </table>
+    :
+    <div className='alert alert-danger'>
+      No User Data Present
+    </div>
+}
+    
   </div>
 </div>
 </>

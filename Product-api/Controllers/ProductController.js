@@ -1,21 +1,26 @@
 const routes=require("express").Router()
  const Product=require("../model/Product");
+ let path = require("path");
 
  routes.post("/" ,(async(req,res)=>{
-    await Product.create(req.body);
-    res.send({success:true});
+  // console.log(req.body);
+  // console.log(req.files);
+  let myfile= req.files.uploadedimage;
+  req.body.image=myfile.name;
+  // name of that image will be stored in body.image
+  let imagepath=path.resolve()+"/assets/images"+myfile.name;
+  await myfile.mv(imagepath);
+     let result = await Product.create(req.body);
+    res.send({success:true ,result : result});
   }))
 routes.get("/" , async(req,res)=>{
         let result= await Product.find();
      res.send(result);
-     console.log(result);
+    //  console.log(result);
     })
      // here this one is custom API 
-     routes.get("/findbycategory/:a",async(req,res)=>{
-      let a=req.params.a;
-      let result= await SubCategory.find({category :a})
-      res.send(result);
-    });
+    
+     
   
     routes.get("/:id",(async(req,res)=>
         {

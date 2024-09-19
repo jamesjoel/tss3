@@ -25,13 +25,11 @@ let navigate =useNavigate();
       category: "",
       name:""
     },
-    onSubmit : (data)=>
-      {
+    onSubmit:(data)=>{
       axios.post(Api_Url+"SubCategory",data)
-      .then((response)=>{
-      console.log(response.data);
-      navigate("/Admin/SubCategory");})
-
+      .then(response=>{
+        console.log(response.data)})
+        navigate("/Admin/SubCategory")
     }
     // here using post because we are submiting form
 
@@ -48,17 +46,18 @@ let navigate =useNavigate();
         <div className='my-3'>
             <label>Select Category </label>
              <select name='category' onChange={SubCateFrm.handleChange} className={'form-control '+(SubCateFrm.errors.name&&SubCateFrm.touched.name ?"is-valid":"")}>
+             <option>Select</option>
               {
+                
               Category.map((item)=>
+               
               <option key={item._id}>{item.category}</option>)
             }
              </select>
-             
-          
             </div>
           <div className='my-3'>
             <label>SubCategory Name</label>
-            <input type='text'  placeholder='Enter SubCategory' onChange={SubCateFrm.handleChange} className={'form-control '+(SubCateFrm.errors.name&&SubCateFrm.touched.name ?"is-valid":"")}  name='name'></input>
+            <input type='text' name='name' placeholder='Enter SubCategory' onChange={SubCateFrm.handleChange} className={'form-control '+(SubCateFrm.errors.name&&SubCateFrm.touched.name ?"is-valid":"")} ></input>
             <br></br>
             {
               SubCateFrm.errors.name&&SubCateFrm.touched.name
@@ -67,9 +66,9 @@ let navigate =useNavigate();
                :
                ""
             }
-            <button  type='submit' className='btn btn-success'>Submit</button>
+            <button  type='submit'  className='btn btn-success'>Submit</button>
             <NavLink className="btn btn-info" to="/Admin/SubCategory" >Back</NavLink>
-          </div>
+            </div>
         </form>
       </div>
     </div>
