@@ -8,15 +8,13 @@ import { Outlet } from 'react-router-dom'
 const UserModule = () => {
   return (
     <>
-    <div className="main-content-wrapper d-flex clearfix">
+  <div className="main-content-wrapper d-flex clearfix">
   <Header/>
   <Outlet/>
   <News/>
   <Footer/>
-      </div> 
-
-    
-    </>
+  </div> 
+</>
   )
 }
 

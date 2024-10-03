@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Login = () =>{
    let navigate=useNavigate();
-   let[errMsg ,setErrMsg]=useState("");
+   let[errMsg ,setErrMsg]=useState();
    let [showLoader,setShowLoader]=useState(false);
     
    const Loginfrm=useFormik({
@@ -21,9 +21,10 @@ const Login = () =>{
     axios.post(Api_Url+"Auth",data)
     .then((response)=>{
              setShowLoader(true);
-          if(response.data.successs==true)
+          if(response.data.success==true)
         {
             let token= response.data.token;
+            let User =response.data.name;
             localStorage.setItem("user-access",token);
             // Here user-access is the name of the property of token
             localStorage.setItem("name",User);
@@ -33,14 +34,19 @@ const Login = () =>{
         else{
             if(response.data.errtype==1)
             {
-                setErrMsg("This Username password is invalid")
+                setErrMsg("This Username password is invalid");
             }
+            else
             if(response.data.errtype==2)
             {
                  setErrMsg("This password is invalid");
             }
+            else if(response.data.errtype==3)
+              {
+                setErrMsg("You Account is Deactivated");
+           }
        }
-     
+     console.log(response.data);
       
     })
     
@@ -69,7 +75,6 @@ const Login = () =>{
        ""
       }
     </div>
-        
         <div className='my-2'>
         <label>Password</label>
         <input type='password' name="password" onChange={Loginfrm.handleChange} placeholder='Enter Password' className={'form-control '+(Loginfrm.errors.password&&Loginfrm.touched.password ?"is-invalid":"")}/>

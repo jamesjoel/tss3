@@ -5,4 +5,5 @@ routes.use("/api/User",require("../Controllers/UserController"));
 routes.use("/api/Category",require("../Controllers/CategoryController"));
 routes.use("/api/Auth", require("../Controllers/AuthController"));
 routes.use("/api/SubCategory",require("../Controllers/SubCategoryController"))
+routes.use("/api/Admin",require("../Controllers/AdminAuthController"));
 module.exports=routes;

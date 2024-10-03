@@ -6,7 +6,7 @@ const News = () => {
     <>
      {/* <!-- ##### Newsletter Area Start ##### --> */}
      <section className="newsletter-area section-padding-100-0">
-        <div className="container">
+        <div className="container-fluid">
             <div className="row align-items-center">
                 {/* <!-- Newsletter Text --> */}
                 <div className="col-12 col-lg-6 col-xl-7">

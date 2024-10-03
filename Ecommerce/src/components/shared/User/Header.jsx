@@ -7,7 +7,7 @@ const Header = () => {
     <>
 
      {/* <!-- ##### Main Content Wrapper Start ##### --> */}
-     <div className="main-content-wrapper d-flex clearfix">
+     {/* <div className="main-content-wrapper d-flex clearfix"> */}
 
      {/* <!-- Mobile Nav (max width 767px)--> */}
      <div className="mobile-nav">
@@ -16,9 +16,9 @@ const Header = () => {
              <a href="index.html"><img src="/assets/img/core-img/logo.png" alt=""/></a>
          </div>
          {/* <!-- Navbar Toggler --> */}
-         <div className="amado-navbar-toggler">
+         <button  className="amado-navbar-toggler">
              <span></span><span></span><span></span>
-         </div>
+         </button>
      </div>
      
 
@@ -33,12 +33,27 @@ const Header = () => {
          {/* <!-- Amado Nav --> */}
          <nav className="amado-nav">
              <ul>
-                 <li><NavLink to="/">Home</NavLink></li>
-                 <li ><NavLink to ="/Shop">Shop</NavLink></li>
+                 <li><NavLink className="text-center" to="/">Home</NavLink></li>
+                 <li ><NavLink className="text-center" to ="/Shop">Shop</NavLink></li>
                  {/* <li><NavLink to="product-details.html">Product</NavLink></li> */}
-                 <li><NavLink to="/Cart">Cart</NavLink></li>
-                 <li><NavLink to="/Login">My Account</NavLink></li>
-                 <li><NavLink to="/SignUp">SIGNup</NavLink></li>
+                 <li><NavLink className="text-center" to="/Cart">Cart</NavLink></li>
+                 {
+                    localStorage.getItem("name")
+                    ?
+                    <li className='"nav-item dropdown'>
+                        <NavLink className="nav-link fw-bolder bg-light dropdown-toggle text-center"  data-bs-toggle="dropdown" to="">{localStorage.getItem("name")}</NavLink>
+                        <div className='dropdown-menu' >
+                            <NavLink className="dropdown-item text-center" to="/myaccount" >My-Account</NavLink>
+                            <NavLink className="dropdown-item text-center" to="/Profile" >Profile</NavLink>
+                            <NavLink className="dropdown-item text-center" to="/logout" >Logout</NavLink>
+                        </div>
+                        </li>
+                    :
+                    <>
+                     <li><NavLink className="text-center" to="/Login">My Account</NavLink></li>
+                     <li><NavLink className="text-center" to="/SignUp">SIGNup</NavLink></li>
+                     </>
+                 }
              </ul>
          </nav>
          {/* <!-- Button Group --> */}
@@ -61,7 +76,7 @@ const Header = () => {
              <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
          </div>
      </header>
-     </div>
+     {/* </div> */}
      </>
 
 

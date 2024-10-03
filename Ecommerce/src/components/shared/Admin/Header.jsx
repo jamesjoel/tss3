@@ -12,27 +12,37 @@ const Header = () => {
   <NavLink className="navbar-brand text-dark" to="/Admin">Administrator Panel</NavLink>
    <div className="collapse navbar-collapse justify-content-start" id="navbarTogglerDemo03">
     <ul className="navbar-nav" style={{margin:"0px 30px 0px 30px"}}>
-      <li className="nav-item ">
-        <NavLink  to="/Admin/Login"> Login &nbsp;&nbsp; </NavLink>
+      {
+        localStorage.getItem("access-token")
+        ?
+        <>
+        <li className="nav-item ">
+        <NavLink to="/Admin/Logout">Logout&nbsp;&nbsp;</NavLink>
       </li>
       <li className="nav-item ">
-        <NavLink to="/Admin/Dashboard">Dashboard &nbsp;&nbsp;</NavLink>
-      </li>
+      <NavLink to="/Admin/Dashboard">Dashboard &nbsp;&nbsp;</NavLink>
+    </li>
+    <li className="nav-item ">
+      <NavLink to="/Admin/Product">Product &nbsp;&nbsp;</NavLink>
+    </li>
+    <li className="nav-item ">
+      <NavLink to="/Admin/Category">Category &nbsp;&nbsp;</NavLink>
+    </li>
+    <li className="nav-item ">
+      <NavLink to="/Admin/SubCategory">SubCategory &nbsp;&nbsp;</NavLink>
+    </li>
+    <li className="nav-item ">
+      <NavLink to="/Admin/User">User&nbsp;&nbsp;</NavLink>
+    </li>
+    </>
+      :
       <li className="nav-item ">
-        <NavLink to="/Admin/Product">Product &nbsp;&nbsp;</NavLink>
-      </li>
-      {/* <li className="nav-item ">
-        <NavLink to="/Admin/Product/Add">Product &nbsp;&nbsp;</NavLink>
-      </li> */}
-      <li className="nav-item ">
-        <NavLink to="/Admin/Category">Category &nbsp;&nbsp;</NavLink>
-      </li>
-      <li className="nav-item ">
-        <NavLink to="/Admin/SubCategory">SubCategory &nbsp;&nbsp;</NavLink>
-      </li>
-      <li className="nav-item ">
-        <NavLink to="/Admin/User">User</NavLink>
-      </li>
+      <NavLink  to="/Admin/Login"> Login &nbsp;&nbsp; </NavLink>
+    </li>
+     
+      }
+      
+      
     </ul>
     <form className="form-inline my-2 my-lg-0">
       <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>

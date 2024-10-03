@@ -7,7 +7,8 @@ UserSchema=mongoose.Schema({
     ,address:String
     ,pincode:Number
     ,contact :Number
-    // ,city:String
+    ,state:String
+    ,city:String
     ,gender:String
     ,createdAt:{
         type :String

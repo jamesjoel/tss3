@@ -6,12 +6,30 @@ import Api_Url from '../../../constants/Api_Url'
 const SubCategory = () => {
 
   let [SubCategory ,SetSubCategory]=useState([]);
+  let[selectSubcate,setSelectSubcate]=useState({});
  useEffect(()=>{
-  axios.get(Api_Url+"SubCategory").
-  then((response)=>{
+  axios.get(Api_Url+"SubCategory")
+  .then((response)=>{
     SetSubCategory(response.data);
   })
+  .catch((error) => {
+    console.error(error);
+    // Handle error here
+  })
   },[])
+  let askDelete=(item)=>{
+  setSelectSubcate(item);
+  // console.log(item);
+ 
+  }
+
+  let confDelete=()=>{
+ axios.delete(`${Api_Url}SubCategory/${selectSubcate._id}`)
+   .then((response)=>{
+     SetSubCategory(()=>{
+       return SubCategory.filter(item=>item._id!=selectSubcate._id)
+         })})
+  }
   return (
     <>
     <div className='Container'>
@@ -39,8 +57,8 @@ const SubCategory = () => {
                 <td>{index+1}</td>
                 <td>{item.category}</td>
                 <td>{item.name}</td>
-                <td><i className="fa-solid fa-pen"></i></td>
-                <td ><i className="fa-solid fa-trash"></i></td>
+                <td><NavLink to={`/Admin/SubCategory/edit/${item._id}`} className="btn btn-info"><i className="fa-solid fa-pen"></i></NavLink></td>
+                <td ><button className='btn btn-danger' onClick={()=>askDelete(item)} data-bs-toggle="modal" data-bs-target="#delmodal"><i className="fa-solid fa-trash"></i></button></td>
                </tr>
               )}
             
@@ -55,10 +73,28 @@ const SubCategory = () => {
         </div>
       </div>
     </div>
+
+    <div className="modal fade" id="delmodal">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+           <h2>Subcategory Delete</h2>
+          </div>
+          <div className="modal-body">
+          <h4>Are you sure you want to Delete {selectSubcate.name}??</h4>
+          </div>
+          <div className="modal-footer">
+            <button className='btn btn-danger' data-bs-dismiss="modal" onClick={confDelete}>Delete</button>
+            <button className='btn btn-dark' data-bs-dismiss="modal" >Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     </>
   )
 
    }
+  
    
 
 export default SubCategory

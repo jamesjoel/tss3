@@ -28,12 +28,12 @@ routes.get("/",(async(req,res)=>{
     routes.put("/:id",(async(req,res)=>
     {
         let id=req.params.id;
-        let result=await SubCategory.updatemany({_id:id},req.body)
+        let result=await SubCategory.updateMany({_id:id},req.body)
         res.send({seccess:true,result:result});
     }))
     routes.delete("/:id",async(req,res)=>{
         let id =req.params.id;
-        await SubCategory.deleteMany({_id :id});
+        await SubCategory.deleteMany({_id:id});
         // here we  delete the data whose id is _id
         res.send({success:true});
       })

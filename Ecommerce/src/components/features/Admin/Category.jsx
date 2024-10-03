@@ -1,12 +1,12 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink,useParams} from 'react-router-dom'
 import axios from 'axios'
-import { useState ,useEffect } from 'react'
+import { useState ,useEffect} from 'react'
 import Api_Url from '../../../constants/Api_Url'
 const Category = () => {
-
-  let [Category ,SetCategory]=useState([]);
-  let [selectedCate,setselectedCate]=useState({});
+ 
+let [Category ,SetCategory]=useState([]);
+let [selectedCate,setselectedCate]=useState({});
  useEffect(()=>{
   axios.get(Api_Url+"Category").then((response)=>{
     SetCategory(response.data);
@@ -23,6 +23,17 @@ const Category = () => {
      })
     })
   }
+  let params =useParams();
+  useEffect(()=>{
+   
+   if( params && params.a)
+   {
+    let id=params.a;
+    console.log(id);
+   }
+    // This a word is similar to api id variable name since we gave a in our route so using a here also
+  },[]);
+
 
   return (
     <>
@@ -50,7 +61,7 @@ const Category = () => {
               <td>{index+1}</td>
               <td>{item.category}</td>
               <td>
-                <button className='btn btn-info'><i className="fa-solid fa-pen"></i></button>
+                <NavLink to={`/Admin/Category/edit/${item._id}`}  className='btn btn-info '><i className="fa-solid fa-pen"></i></NavLink>
                 </td>
               <td >
                 <button className='btn btn-danger' onClick={()=>askDelete(item)} data-bs-toggle='modal' data-bs-target="#delModal"><i className="fa-solid fa-trash"></i></button></td>
@@ -76,7 +87,7 @@ const Category = () => {
               <h4>Delete Category</h4>
             </div>
             <div className="modal-body">
-              <p>Are you Sure You want to delete {selectedCate.category}??</p>
+              <p>Are you Sure You want to delete  {selectedCate.category}??</p>
 
             </div>
             <div className="modal-footer">

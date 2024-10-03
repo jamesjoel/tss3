@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <>
      <footer className="footer_area clearfix">
-        <div className="container">
+        <div className="container-fluid">
             <div className="row align-items-center">
                 {/* <!-- Single Widget Area --> */}
                 <div className="col-12 col-lg-4">
@@ -36,9 +36,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                                         <li className="nav-item">
                                             <NavLink to="/Shop">Shop</NavLink>
                                         </li>
-                                     
-                    
-                     <li className="nav-item">
+                                           <li className="nav-item">
                                             <NavLink to="/Cart">Cart</NavLink>
                                         </li>
                                         <li className="nav-item">
