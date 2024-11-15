@@ -10,6 +10,18 @@ const ProductList = () => {
 
 
   },[])
+  let [pro,setPro]=useState([]);
+  let askDelete=(item)=>{
+    setPro(item)
+
+  }
+  let confDelete=()=>{
+    axios.delete(`${Api_Url}Product/${pro._id}`)
+   .then((response)=>{
+     setAllPro(()=>{
+       return allPro.filter(item=>item._id!=pro._id)
+         })})
+  }
 
 
   useEffect(()=>{
@@ -20,6 +32,7 @@ const ProductList = () => {
   },[])
 
   return (
+    <>
     <div className="container my-5">
       <div className="row">
         <div className="col-md-12">
@@ -49,7 +62,7 @@ const ProductList = () => {
                               <td>{item.category}</td>
                               <td>{item.subcategory}</td>
                               <td><i className="fa-solid fa-pen-to-square text-warning"></i></td>
-                              <td><i className="fa-solid fa-trash text-danger"></i></td>
+                              <td><button className='btn btn-danger' data-bs-toggle="modal" data-bs-target="#delmodal"onClick={()=>askDelete(item)}><i className="fa-solid fa-trash text-light"></i></button></td>
                           </tr>)
                         }
                       </tbody>
@@ -63,6 +76,23 @@ const ProductList = () => {
         </div>
       </div>
     </div>
+    <div className="modal fade" id="delmodal">
+       <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h2>Delete Product</h2>
+          </div>
+          <div className="modal-body">
+       <h4>Are you sure you want to delete {pro.name} ?</h4>
+          </div>
+          <div className="modal-footer">
+            <button className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button className="btn btn-danger"  onClick={confDelete} data-bs-dismiss="modal">Delete</button>
+          </div>
+        </div>
+       </div>
+    </div>
+    </>
   )
 }
 

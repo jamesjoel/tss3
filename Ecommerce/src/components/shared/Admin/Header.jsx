@@ -34,6 +34,9 @@ const Header = () => {
     <li className="nav-item ">
       <NavLink to="/Admin/User">User&nbsp;&nbsp;</NavLink>
     </li>
+    <li className="nav-item ">
+      <NavLink to="/Admin/Setting">Add-Admin&nbsp;&nbsp;</NavLink>
+    </li>
     </>
       :
       <li className="nav-item ">

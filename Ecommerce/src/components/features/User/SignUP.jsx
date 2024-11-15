@@ -21,7 +21,7 @@ const SignUP = () => {
           })
   .catch((error)=>console.log(error));
   },[])
-// HERE BLANK ARRAY IS MUSTS
+// HERE BLANK ARRAY IS MUST
                  
     let SignUPForm= useFormik({
         validationSchema:SignUPSchema,

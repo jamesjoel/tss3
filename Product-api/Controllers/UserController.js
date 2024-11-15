@@ -1,11 +1,14 @@
 let User = require("../model/User");
+let Cart =require("../model/Cart")
 let routes=require("express").Router()
 const sha1 = require("sha1");
 const jwt = require("jsonwebtoken");
 routes.post("/",async(req,res)=>{
     req.body.password= sha1(req.body.password);
     // after converted our password we created data body
-    await User.create(req.body);
+   let result=  await User.create(req.body);
+   let userid=result._id;
+   await Cart.create({userid: userid})
     res.send({success:true});
 })
    
@@ -53,6 +56,19 @@ routes.post("/",async(req,res)=>{
         await User.updateMany({_id:id},{status:status});
         res.send({success:true})
 
+ })
+//  by using this route we are checking if username  is already exits or not
+   routes.get("/CheckUserName/:a",async(req,res)=>{
+    let u =req.params.a;
+    let result=await User.find({email:u})
+    if(result.length==0)
+    {
+        res.send({success:true})
+    }
+    else
+    {
+        res.send({success:false})
+    }
  })
      //   to do updation we need to  find the user first so we decode the token and get id from there 
     // after login  we get token and we decode it and get id and then we use that id to find the user

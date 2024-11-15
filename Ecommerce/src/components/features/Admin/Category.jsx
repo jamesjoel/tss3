@@ -87,7 +87,7 @@ let [selectedCate,setselectedCate]=useState({});
               <h4>Delete Category</h4>
             </div>
             <div className="modal-body">
-              <p>Are you Sure You want to delete  {selectedCate.category}??</p>
+              <p>Are you Sure You want to delete{selectedCate.category}??</p>
 
             </div>
             <div className="modal-footer">

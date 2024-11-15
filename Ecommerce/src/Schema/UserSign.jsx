@@ -1,9 +1,28 @@
 
 import * as YUP from 'yup'
-// FIRTLY CREATE A YUP OBJECT
+import Api_Url from '../constants/Api_Url';
+import axios from 'axios';
+// FIRSTLY CREATE A YUP OBJECT
 let SignUPSchema=YUP.object({
-    username:YUP.string().required("Insert your full name")
-    ,email:YUP.string().email("Invalid Email id").required("Insert your email")
+    username:YUP.string().test(
+     "first letter uppercase",'Wrong Name',(value)=>{
+        let arr=value.split("");
+        let f=arr[0];
+        // if(f==f.toUpperCase())
+        // {
+        //   return true;
+        // }
+        // else{
+        //    return false;
+        // }
+         return f==f.toUpperCase()?true:false
+     }
+    ).required("Insert your full name")
+    ,email:YUP.string().email("Invalid Email id")
+    .test("Check_UserName","This Username is Already exists",async(value)=>{
+        let response=await axios.get(`${Api_Url}CheckUserName/${value}`)
+        return response.data.success;
+        }).required("Insert your email")
     ,password:YUP.string().min(6,"password must be 6 character").required("Insert your password")
     ,repass:YUP.string().oneOf([YUP.ref('password')],'Password did not match').required("Insert your repass")
     ,address:YUP.string().required("Insert your address")

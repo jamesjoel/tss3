@@ -11,9 +11,9 @@ const UserModule = () => {
   <div className="main-content-wrapper d-flex clearfix">
   <Header/>
   <Outlet/>
-  <News/>
-  <Footer/>
-  </div> 
+ </div>
+ <News/>
+ <Footer/> 
 </>
   )
 }

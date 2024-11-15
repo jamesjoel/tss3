@@ -21,6 +21,9 @@ import AdminLogout from './components/features/Admin/AdminLogout'
 import Profile from './components/features/User/Profile'
 import UserUpdate from './components/features/User/UserUpdate'
 import ChangePass from './components/features/User/ChangePass'
+import AdminSetting from './components/features/Admin/AdminSetting'
+import Product_detail from './components/shared/User/Product_detail'
+import Checkout from './components/shared/User/Checkout'
 
 const Allroutes = () => {
  return (
@@ -32,7 +35,10 @@ const Allroutes = () => {
         <Route path='login' element={<Login/>}/>
         <Route path='Cart' element={<Cart/>}/>
         <Route path='SignUp' element={<SignUP/>}/>
-       
+        <Route path='Shop/Product/Detail' element={<Product_detail/>}/>
+        <Route path='Shop/Product/Detail/:id' element={<Product_detail/>}/>
+       <Route path='Checkout'element={<Checkout/>}/>
+       <Route path='Checkout/:id'element={<Checkout/>}/>
          {/* <Route path ='' element={<UserProtectedroutes/>} */}
       <Route path='logout' element={<Logout/>}/>
        <Route path='Profile'element={<Profile/>}/>
@@ -46,11 +52,14 @@ const Allroutes = () => {
       <Route path='Logout' element={<AdminLogout/>}/>
        <Route path='Dashboard' element={<Dashboard/>}/>
        <Route path='Product/Add' element={<Products/>}/>
+       
+
        <Route path='Product' element={<ProductsList/>}/>
        <Route path='Category' element={<Category/>}/>
        <Route path='Category/Add' element={<AddCategory/>}/>
        <Route path='Category/edit/:a' element={<AddCategory/>}/>
        <Route path='User' element={<UserList/>}/>
+       <Route path='Setting' element={<AdminSetting/>}/>
        <Route path='SubCategory' element={<SubCategory/>}/>
        <Route path='SubCategory/Add' element={<AddSubCate/>}/>
        <Route path='SubCategory/edit/:a' element={<AddSubCate/>}/>

@@ -95,6 +95,7 @@ const Products = () => {
                 <div className='my-2'>
                   <label className='mb-2'>Select Product Image</label>
                   <input type='file' ref={photo} name='image' onChange={proForm.handleChange} className={'form-control '+(proForm.errors.image && proForm.touched.image ? 'is-invalid' : '')} />
+                   <small>Image size must be les than 150 Kb</small>
                 </div>
                 <div className='my-2'>
                   <label className='mb-2'>Category</label>

@@ -7,7 +7,7 @@ const Home = () => {
 <>
 {/* <div className="main-content-wrapper d-flex clearfix"> */}
 <div className="products-catagories-area clearfix">
-  <div className="amado-pro-catagory clearfix" style={{position: "relative", height: "6577.23px;"}}>
+  <div className="amado-pro-catagory clearfix" style={{position:"relative", height: "6577.23px"}}>
 
                 {/* <!-- Single Catagory --> */}
                 <div className="single-products-catagory clearfix" style={{position: "absolute", left: "0%" ,top: "0px"}}>

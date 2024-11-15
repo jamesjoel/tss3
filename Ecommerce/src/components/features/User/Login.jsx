@@ -5,8 +5,11 @@ import axios from 'axios'
 import Api_Url from '../../../constants/Api_Url'
 import LoginfrmSchema from '../../../Schema/UserLogin'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { LoginInAction } from '../../../../redux/LoginUserSlice'
 
 const Login = () =>{
+  let dispatch=useDispatch();
    let navigate=useNavigate();
    let[errMsg ,setErrMsg]=useState();
    let [showLoader,setShowLoader]=useState(false);
@@ -29,6 +32,7 @@ const Login = () =>{
             // Here user-access is the name of the property of token
             localStorage.setItem("name",User);
             setShowLoader(false);
+            dispatch(LoginInAction());
             navigate("/");
         }
         else{

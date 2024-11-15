@@ -3,7 +3,7 @@ const app= express();
 const cors=require("cors");
 const upload =require("express-fileupload");
 app.use(express.static(__dirname+"/assets"));
-// here giving path to access image folder
+// here giving path to access image folder NOW IF WANT TO EXCESS OUR IMAGE THAT WE ONLY NEED TO USE localhost/image
 app.use(upload());
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());

@@ -6,3 +6,4 @@ const AdminSchema=mongoose.Schema({
 },{collection:"Admin"})
 let Admin=mongoose.model("Admin",AdminSchema);
 module.exports=Admin
+// HERE WE DIDNT TAKE REPASS IN BACKEND SCHEMA
