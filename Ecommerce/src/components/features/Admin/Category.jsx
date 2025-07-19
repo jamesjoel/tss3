@@ -69,7 +69,7 @@ let [selectedCate,setselectedCate]=useState({});
             )}
           
 
-          </tbody>
+          </tbody>  
         </table>
         :
         <div className='alert alert-danger'>

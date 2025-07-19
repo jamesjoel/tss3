@@ -56,6 +56,7 @@ const Header = () => {
                     <>
                      <li><NavLink className="text-center" to="/Login">My Account</NavLink></li>
                      <li><NavLink className="text-center" to="/SignUp">SIGNup</NavLink></li>
+                      <li><NavLink className="text-center" to="/Admin">Admin-Login</NavLink></li>
                      </>
                  }
              </ul>
@@ -73,12 +74,12 @@ const Header = () => {
              <Navlink to="" className="search-nav"><img src="/assets/img/core-img/search.png" alt=""/> Search</Navlink> */}
          </div>
          {/* <!-- Social Button --> */}
-         <div className="social-info d-flex justify-content-between">
+         {/* <div className="social-info d-flex justify-content-between">
              <a href="#"><i className="fa fa-pinterest" aria-hidden="true"></i></a>
              <a href="#"><i className="fa fa-instagram" aria-hidden="true"></i></a>
              <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
              <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
-         </div>
+         </div> */}
      </header>
      {/* </div> */}
      </>

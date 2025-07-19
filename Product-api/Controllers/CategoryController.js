@@ -28,6 +28,4 @@ routes.get("/:id",(async(req,res)=>{
     let result =await Category.updateMany({_id:id},req.body);
     res.send({success:true , result:result});
   })
-  
-
-module.exports=routes;
+   module.exports=routes;

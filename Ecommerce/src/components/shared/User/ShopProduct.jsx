@@ -40,6 +40,7 @@ const ShopProduct = () => {
   return (
   <>
     
+    
                <div className="amado_product_area section-padding-100">
             <div className="container-fluid">
                 <div className="row">
@@ -53,6 +54,7 @@ const ShopProduct = () => {
                                     <a href="#"><i className="fa fa-bars" aria-hidden="true"></i></a>
                                 </div>
                             </div>
+
                             {/* <!-- Sorting --> */}
                             <div className="product-sorting d-flex">
                                 <div className="sort-by-date d-flex align-items-center mr-15">

@@ -19,6 +19,13 @@ routes.get("/" , async(req,res)=>{
     //  console.log(result);
     })
      // here this one is custom API 
+
+// here total record api must written prior to get element by id api otherwise it will consider total rec as id 
+     routes.get("/totalrec", async (req, res) => {
+      let result = await Product.countDocuments()
+      res.send({ total: result }); // This is correct
+      // console.log(total);
+  });
      routes.get("/:id",(async(req,res)=>
         {
             let id= req.params.id;
@@ -44,11 +51,7 @@ routes.get("/" , async(req,res)=>{
             let result = await Product.find().limit(a).exec();
             res.send(result);
           })
-           routes.get("/totalrec", async (req, res) => {
-            let result = await Product.estimatedDocumentCount()
-            res.send({ total: result }); // This is correct
-            console.log(total);
-        });
+           
          
    
 

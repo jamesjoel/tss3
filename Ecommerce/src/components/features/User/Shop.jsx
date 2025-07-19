@@ -6,7 +6,7 @@ import Categories from '../../shared/User/Categories'
 
 const Shop = () => {
   return (<>
-      <Categories/>
+      {/* <Categories/> */}
      <ShopProduct/>
   </>
  )

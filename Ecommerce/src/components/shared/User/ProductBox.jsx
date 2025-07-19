@@ -9,7 +9,7 @@ const ProductBox = ({info}) => {
        <>
          <div className="col-12 col-sm-6 col-md-12 col-xl-6">
          <NavLink to={`Product/Detail/${info._id}`}>
-                         <div className="single-product-wrapper">
+                         <div className="single-product-wrapper col-12">
                              {/* <!-- Product Image --> */}
                              <div className="product-img">
                                  <img src={`${Api_Path}/${info.image}`} alt=""/>
